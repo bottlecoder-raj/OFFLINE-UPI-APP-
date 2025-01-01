@@ -2,8 +2,7 @@
  *DATE:01-01-2025
  *AUTHOR:RAJNARAYAN HAZRA
  *THIS CODE IS MADE FOR MINI PROJECT-OFFLINE UPI PAYMENT APP[TEXTMONEY]
- *THIS ALLOWS YOU TO DELETE THE ACCOUNT
- *THIS IS THE SERVER THAT WILL BE WORKING BACKEND
+ *THIS IS THE ACCOUNT REMOVAL THAT WILL BE WORKING BACKEND
  *IT CAN ALSO BE USED AS A MANUAL REMOTE SERVER
  *TO SHOW APPRECIATION reply on my mail mentioned in profile
  */
@@ -40,8 +39,6 @@ int main()
         if (strstr(line, acc))
         {
             printf("Record found!\n");
-            printf("\n%s\n%d\n", line, pos);
-
             found = 1; // Set the flag to 1 when found
                        // Exit the loop after finding the record
         }

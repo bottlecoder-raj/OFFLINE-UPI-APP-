@@ -6,7 +6,6 @@
 *IT CAN ALSO BE USED AS A MANUAL REMOTE SERVER
 *TO SHOW APPRECIATION reply on my mail mentioned in profile
 */
-
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
@@ -178,6 +177,10 @@ int main()
             if (!found)
             {
                 printf("Account not registered!\n");
+                fclose(file);
+                fclose(temp);
+                remove(tempfile);
+
                 continue;
             }
 
@@ -202,6 +205,9 @@ int main()
                 if (amt > num)
                 {
                     printf("Insufficient Balance");
+                    fclose(file);
+                    fclose(temp);
+                    remove(tempfile);
                     continue;
                 }
                 num = num - amt;
@@ -213,7 +219,7 @@ int main()
 
             // Convert float to string
             sprintf(str, "%.2f", num);
-          //  printf("\n\nstring:%s", str);
+            //  printf("\n\nstring:%s", str);
             rewind(file);
             char update[256];
             while (fgets(update, sizeof(update), file))
@@ -226,20 +232,18 @@ int main()
                     if (pos)
                     {
                         strncpy(pos, str, 10); // Overwrite with "Manager"
-                        pos[strlen(str)] = '\n';  
+                        pos[strlen(str)] = '\n';
                     }
                 }
-                fputs(update, temp); 
-                fprintf(temp,"");// Write the line to the temp file
-                
+                fputs(update, temp);
+                fprintf(temp, ""); // Write the line to the temp file
             }
 
             fclose(file);
             fclose(temp);
             remove(filename);
             rename(tempfile, filename);
-            remove(tempfile);
-        }
+                }
 
         else if (type == 'x')
         {

@@ -2,7 +2,7 @@
  *DATE:01-01-2025
  *AUTHOR:RAJNARAYAN HAZRA
  *THIS CODE IS MADE FOR MINI PROJECT-OFFLINE UPI PAYMENT APP[TEXTMONEY]
- *THIS IS THE ACCOUNT REMOVAL THAT WILL BE WORKING BACKEND
+ *THIS IS THE SERVER THAT WILL BE WORKING BACKEND
  *IT CAN ALSO BE USED AS A MANUAL REMOTE SERVER
  *TO SHOW APPRECIATION reply on my mail mentioned in profile
  */
@@ -10,6 +10,7 @@
 #include <stdlib.h>
 #include <string.h>
 #define NUM 10
+#define MAX_LINE 256
 
 int main()
 {
@@ -20,54 +21,46 @@ int main()
     FILE *file = fopen("data.txt", "r");
     FILE *temp = fopen("temp.txt", "w");
 
-    if (file == NULL)
+    if (file == NULL||temp == NULL)
     {
         perror("Error opening file");
         exit(1);
     }
-    char acc[10];
-    char line[256];
+   char acc[10];
+    char line[MAX_LINE];
     int found = 0;
-    char *token;
-    rewind(file);
-    printf("Enter Account number[UPTO 9 DIGITS]:");
+
+    printf("Enter Account number [UP TO 9 DIGITS]: ");
     scanf("%9s", acc);
-    while (fgets(line, sizeof(line), file))
-    {
-        pos++;
-        // Check if the account number exists in the current line
-        if (strstr(line, acc))
-        {
-            printf("Record found!\n");
-            found = 1; // Set the flag to 1 when found
-                       // Exit the loop after finding the record
+
+    while (fgets(line, sizeof(line), file)) {
+        char *line_acc = strtok(line, ",");
+        if (line_acc && strcmp(line_acc, acc) == 0) {
+            printf("Account deleted: %s\n", acc);
+            found = 1;
+            continue; // Skip writing this line to the temp file
         }
+        fputs(line, temp); // Write the non-matching line
     }
 
-    // If the account was not found, print a message
-    if (!found)
-    {
-        printf("\nAccount not registered!\n");
+    if (!found) {
+        printf("Account not registered!\n");
+    } else {
+        printf("DATA REMOVED!\n");
     }
-    if (found)
-    {
-        rewind(file);
-        char update[256];
-        while (fgets(update, sizeof(update), file))
-        {
-            // Check if the line contains the targeupdate
-            if (strstr(update, acc))
-            {
-                fgets(update, sizeof(update), file);
-            }
-            fputs(update, temp);
-            fprintf(temp, ""); // Write the line to the temp file
-        }
-        printf("\nDATA REMOVED!");
-        fclose(file);
-        fclose(temp);
-        remove(filename);
-        rename(tempfile, filename);
+
+    fclose(file);
+    fclose(temp);
+
+    if (remove(filename) != 0) {
+        perror("Error deleting original file");
+        exit(1);
     }
+    if (rename(tempfile, filename) != 0) {
+        perror("Error renaming temp file");
+        exit(1);
+    }
+
+    
     return 0;
 }

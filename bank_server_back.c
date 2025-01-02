@@ -15,7 +15,7 @@ int main()
 {
     char acc[10];
     char name[20];
-    float balance;
+   float  balance;
     char type;
     int i = 0, j = 0;
 
@@ -23,7 +23,7 @@ int main()
     {
         i++;
         printf("\nAttempt #%d", i);
-        printf("\nREGISTRATION[r]\tEXTRACTION[e]\tTRANSACTION[t]\tEXIT[x]: ");
+        printf("\nREGISTRATION[r]\t  ACC INFO[e]\tTRANSACTION[t]\tEXIT[x]: ");
         scanf(" %1c", &type); // Space before %c skips any leftover newline characters
 
         if (type == 'r')
@@ -72,7 +72,7 @@ int main()
         else if (type == 'e')
         {
             // Extraction Mode
-            printf("\nEXTRACTION MODE\n");
+            printf("\nACCOUNT INFO\n");
             // Add extraction logic here
 
             FILE *file = fopen("data.txt", "r");

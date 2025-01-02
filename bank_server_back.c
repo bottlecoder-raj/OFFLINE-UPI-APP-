@@ -1,11 +1,11 @@
 /*
-*DATE:01-01-2025
-*AUTHOR:RAJNARAYAN HAZRA
-*THIS CODE IS MADE FOR MINI PROJECT-OFFLINE UPI PAYMENT APP[TEXTMONEY]
-*THIS IS THE SERVER THAT WILL BE WORKING BACKEND
-*IT CAN ALSO BE USED AS A MANUAL REMOTE SERVER
-*TO SHOW APPRECIATION reply on my mail mentioned in profile
-*/
+ *DATE:01-01-2025
+ *AUTHOR:RAJNARAYAN HAZRA
+ *THIS CODE IS MADE FOR MINI PROJECT-OFFLINE UPI PAYMENT APP[TEXTMONEY]
+ *THIS IS THE SERVER THAT WILL BE WORKING BACKEND
+ *IT CAN ALSO BE USED AS A MANUAL REMOTE SERVER
+ *TO SHOW APPRECIATION reply on my mail mentioned in profile
+ */
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
@@ -15,7 +15,7 @@ int main()
 {
     char acc[10];
     char name[20];
-   float  balance;
+    float balance;
     char type;
     int i = 0, j = 0;
 
@@ -241,9 +241,17 @@ int main()
 
             fclose(file);
             fclose(temp);
-            remove(filename);
-            rename(tempfile, filename);
-                }
+            if (remove(filename) != 0)
+            {
+                perror("Error deleting original file");
+                exit(1);
+            }
+            if (rename(tempfile, filename) != 0)
+            {
+                perror("Error renaming temp file");
+                exit(1);
+            }
+        }
 
         else if (type == 'x')
         {

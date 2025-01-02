@@ -10,7 +10,6 @@
 #include <stdlib.h>
 #include <string.h>
 #define NUM 10
-#define MAX_LINE 256
 
 int main()
 {
@@ -21,46 +20,51 @@ int main()
     FILE *file = fopen("data.txt", "r");
     FILE *temp = fopen("temp.txt", "w");
 
-    if (file == NULL||temp == NULL)
+    if (file == NULL || temp == NULL)
     {
         perror("Error opening file");
         exit(1);
     }
-   char acc[10];
-    char line[MAX_LINE];
+    char acc[10];
+    char line[256];
     int found = 0;
-
-    printf("Enter Account number [UP TO 9 DIGITS]: ");
+    char *token;
+    rewind(file);
+    printf("Enter Account number[UPTO 9 DIGITS]:");
     scanf("%9s", acc);
+    while (fgets(line, sizeof(line), file))
+    {
+        pos++;
+        // Check if the account number exists in the current line
+        if (strstr(line, acc))
+        {
 
-    while (fgets(line, sizeof(line), file)) {
-        char *line_acc = strtok(line, ",");
-        if (line_acc && strcmp(line_acc, acc) == 0) {
-            printf("Account deleted: %s\n", acc);
-            found = 1;
-            continue; // Skip writing this line to the temp file
+            printf("Account deleted!");
+            found = 1; // Set the flag to 1 when found
+            continue;
+            // fprintf(temp, ""); // Write the line to the temp file
         }
-        fputs(line, temp); // Write the non-matching line
+        fputs(line, temp);
+    }
+    if (!found)
+    {
+        printf("\nAccount not registered!\n");
+        exit(1);
     }
 
-    if (!found) {
-        printf("Account not registered!\n");
-    } else {
-        printf("DATA REMOVED!\n");
-    }
-
+    printf("\nDATA REMOVED!");
     fclose(file);
     fclose(temp);
-
-    if (remove(filename) != 0) {
+    if (remove(filename) != 0)
+    {
         perror("Error deleting original file");
         exit(1);
     }
-    if (rename(tempfile, filename) != 0) {
+    if (rename(tempfile, filename) != 0)
+    {
         perror("Error renaming temp file");
         exit(1);
     }
 
-    
     return 0;
 }

@@ -14,6 +14,7 @@
 int main()
 {
     char acc[10];
+    char mob[11];
     char name[20];
     float balance;
     char type;
@@ -46,6 +47,8 @@ int main()
             printf("Entering details for User%d:\n", j);
             printf("Enter account number[only 9 characters]: ");
             scanf(" %10s", &acc);
+            printf("Enter mobile number: ");
+            scanf(" %11s", &mob);
             printf("Enter name: ");
             scanf(" %[^\n]%*c", name);
             for (int k = 0; name[k]; k++)
@@ -55,9 +58,9 @@ int main()
             printf("Enter balance: ");
             scanf("%f", &balance);
 
-            printf("Acc:%s Name:%s Bal:%.2f", acc, name, balance);
+            printf("\n\nAcc:%s  Reg.mob:+91%s  Name:%s  Bal:%.2f", acc,mob, name, balance);
             int flag = 0;
-            flag = fprintf(file, "%s,%s,%.2f\n", acc, name, balance);
+            flag = fprintf(file, "%s,+91%s,%s,%.2f\n", acc, mob, name, balance);
             if (flag)
             {
                 printf("\nContents written successfully\n");
@@ -101,7 +104,11 @@ int main()
                     {
                         printf("Account Number: %s\n", token); // First token (account number)
                     }
-
+                    token = strtok(NULL, ","); // Get next token (mobile)
+                    if (token != NULL)
+                    {
+                        printf("Reg.mobile: %s\n", token);
+                    }
                     token = strtok(NULL, ","); // Get next token (name)
                     if (token != NULL)
                     {
@@ -156,6 +163,7 @@ int main()
                     printf("Record found!\n");
                     // Split the line into tokens based on commas
                     token = strtok(line, ",");
+                    token = strtok(NULL, ",");
                     token = strtok(NULL, ","); // Get next token (name)
                     if (token != NULL)
                     {

@@ -209,6 +209,7 @@ int main()
         printf("Error Writing to File!\n");
     }
     fclose(mess);
+    system("Serial.exe");
     int zero;
     printf("0:");
     scanf("%d",&zero);

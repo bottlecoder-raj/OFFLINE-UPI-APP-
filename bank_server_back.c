@@ -244,7 +244,7 @@ int main()
                     }
                 }
                 fputs(update, temp);
-                fprintf(temp, ""); // Write the line to the temp file
+                // Write the line to the temp file
             }
 
             fclose(file);

@@ -235,11 +235,11 @@ int main()
                 // Check if the line contains the targeupdate
                 if (strstr(update, acc))
                 {
-                    // Replace "Engineer" with "Manager"
+                    // Replace "old bal" with "new bal"
                     char *pos = strstr(update, token);
                     if (pos)
                     {
-                        strncpy(pos, str, 10); // Overwrite with "Manager"
+                        strncpy(pos, str, 10); // Overwrite with "new bal"
                         pos[strlen(str)] = '\n';
                     }
                 }

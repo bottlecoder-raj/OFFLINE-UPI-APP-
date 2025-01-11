@@ -210,9 +210,9 @@ int main()
     }
     fclose(mess);
     system("Serial.exe");
-    int zero;
-    printf("0:");
-    scanf("%d",&zero);
+   // int zero;
+   // printf("0:");
+   // scanf("%d",&zero);
 
     remove(messfile);
     return 0;

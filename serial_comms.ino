@@ -1,7 +1,6 @@
-//code to  be uploaded in arduino
 #include <SoftwareSerial.h>
 
-SoftwareSerial mySerial(9, 10);  // RX, TX coonection with gsm module along GND pin
+SoftwareSerial mySerial(9, 10);  // RX, TX
 
 String send_mob, send_acc, send_bal;
 String rec_mob, rec_acc, rec_bal;

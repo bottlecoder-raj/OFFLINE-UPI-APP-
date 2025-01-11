@@ -1,3 +1,6 @@
+//While uploading code remove pins 9,10
+//attach GND with GND
+//code uploaded on arduino
 #include <SoftwareSerial.h>
 
 SoftwareSerial mySerial(9, 10);  // RX, TX

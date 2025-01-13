@@ -24,7 +24,7 @@ int main()
     {
         i++;
         printf("\nAttempt #%d", i);
-        printf("\nREGISTRATION[r]\t  ACC INFO[e]\tTRANSACTION[t]\tEXIT[x]: ");
+        printf("\nREGISTRATION[r]\t\tACC INFO[e]\tTRANSACTION[t]\nMONEY TRANSFER[m]\t EXIT[x]: ");
         scanf(" %1c", &type); // Space before %c skips any leftover newline characters
 
         if (type == 'r')
@@ -58,7 +58,7 @@ int main()
             printf("Enter balance: ");
             scanf("%f", &balance);
 
-            printf("\n\nAcc:%s  Reg.mob:+91%s  Name:%s  Bal:%.2f", acc,mob, name, balance);
+            printf("\n\nAcc:%s  Reg.mob:+91%s  Name:%s  Bal:%.2f", acc, mob, name, balance);
             int flag = 0;
             flag = fprintf(file, "%s,+91%s,%s,%.2f\n", acc, mob, name, balance);
             if (flag)
@@ -136,19 +136,22 @@ int main()
         else if (type == 't')
         {
             // TRANSACTION Program
-
+            char acc[9];
+            char accountnumber[10];
+            char acc_mob[13];
             const char *filename = "data.txt";
             const char *tempfile = "temp.txt";
+            const char *messfile = "mess.txt";
 
             FILE *file = fopen("data.txt", "r");
             FILE *temp = fopen("temp.txt", "w");
+            FILE *mess = fopen("mess.txt", "w");
 
-            if (file == NULL || temp == NULL)
+            if (file == NULL || temp == NULL || mess == NULL)
             {
                 perror("Error opening file");
                 continue;
             }
-            char acc[10];
             char line[256];
             int found = 0;
             char *token;
@@ -163,7 +166,14 @@ int main()
                     printf("Record found!\n");
                     // Split the line into tokens based on commas
                     token = strtok(line, ",");
+                   // printf("\n\n%s OK\n\n",token);
+                  
+
                     token = strtok(NULL, ",");
+                     if (token != NULL)
+                    {
+                    strcpy(acc_mob, token);
+                    }
                     token = strtok(NULL, ","); // Get next token (name)
                     if (token != NULL)
                     {
@@ -179,6 +189,7 @@ int main()
                     break;     // Exit the loop after finding the record
                 }
             }
+
             // Convert string to float using strtof
             float num = strtof(token, NULL);
             // If the account was not found, print a message
@@ -188,6 +199,8 @@ int main()
                 fclose(file);
                 fclose(temp);
                 remove(tempfile);
+                fclose(mess);
+                remove(messfile);
 
                 continue;
             }
@@ -203,6 +216,7 @@ int main()
                 printf("Enter amount to deposit:");
                 scanf("%f", &amt);
                 num = num + amt;
+                fprintf(mess, ",,,%s,%s,%.2f,%.2f\n",acc_mob,acc, num, amt);
                 printf("Balance:%.2f", num);
             }
             else if (trans == 'w')
@@ -216,9 +230,12 @@ int main()
                     fclose(file);
                     fclose(temp);
                     remove(tempfile);
+                    fclose(mess);
+                    remove(messfile);
                     continue;
                 }
                 num = num - amt;
+                fprintf(mess, "%s,%s,%.2f,,,,%.2f\n",acc_mob,acc, num, amt);
                 printf("Transaction complete!");
                 printf("Balance:%.2f", num);
             }
@@ -235,16 +252,16 @@ int main()
                 // Check if the line contains the targeupdate
                 if (strstr(update, acc))
                 {
-                    // Replace "old bal" with "new bal"
+                    // Replace "Engineer" with "Manager"
                     char *pos = strstr(update, token);
                     if (pos)
                     {
-                        strncpy(pos, str, 10); // Overwrite with "new bal"
+                        strncpy(pos, str, 10); // Overwrite with "Manager"
                         pos[strlen(str)] = '\n';
                     }
                 }
                 fputs(update, temp);
-                // Write the line to the temp file
+                fprintf(temp, ""); // Write the line to the temp file
             }
 
             fclose(file);
@@ -259,6 +276,16 @@ int main()
                 perror("Error renaming temp file");
                 exit(1);
             }
+
+            fclose(mess);
+            system("Serial.exe");
+            remove(messfile);
+        }
+         else if (type == 'm')
+        {
+            // Exit Program
+        system("money_transfer.exe");
+            continue; // Exit the loop
         }
 
         else if (type == 'x')

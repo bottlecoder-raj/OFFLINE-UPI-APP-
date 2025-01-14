@@ -18,7 +18,7 @@
 </ul><ul>
 <li>Transfer money from one account to other.</li>
 </ul><ul>
-<li>CODE FOR COMMUNICATION:</li>
+<li><h3>CODE FOR COMMUNICATION:</h3></li>
 </ul><ul>
 <li>Download the arduino code and upload in arduino</li>
 </ul><ul>
@@ -36,5 +36,4 @@
 </ul><h2>Acknowledgement</h2>
 <hr><ul>
 <li>Made by Rajnarayan Hazra,Vrushtee Gaikwad</li>
-</ul><h2>Contact</h2>
-<hr><p><span style="margin-right: 30px;"></span><a href="https://github.com/bottlecoder-raj"><img target="_blank" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original.svg" style="width: 10%;"></a></p>
+

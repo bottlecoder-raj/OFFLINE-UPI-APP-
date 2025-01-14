@@ -18,7 +18,7 @@
 </ul><ul>
 <li>Transfer money from one account to other.</li>
 </ul><ul>
-<li><u>CODE FOR COMMUNICATION:</u></li>
+<li><u>CODE FOR COMMUNICATION:<u></li>
 </ul><ul>
 <li>Download the arduino code and upload in arduino</li>
 </ul><ul>

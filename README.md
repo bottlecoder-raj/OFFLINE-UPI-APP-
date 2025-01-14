@@ -27,7 +27,7 @@
 <li>Check for the pin connection in arduino code to connect with gsm module</li>
 </ul><h2>Usage</h2>
 <hr><p>Used in remote areas where internet is inaccessible but 2g network is available, example: Hilly areas. With just Sms you can send  money to the respective account holders.</p><h2>Project Status</h2>
-<hr><p>In Progress/......
+<hr><p>In Progress/......<br>
 The application for mobile is pending. Local bank is created and you can create account, transfer money and send sms to the respective account numbers.</p><h2>Improvements</h2>
 <hr><ul>
 <li>Security and vulnerability while Sms handling</li>

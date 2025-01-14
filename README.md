@@ -18,7 +18,7 @@
 </ul><ul>
 <li>Transfer money from one account to other.</li>
 </ul><ul>
-<li><h4><u>CODE FOR COMMUNICATION:</u></h4></li>
+<li><u>CODE FOR COMMUNICATION:</u></li>
 </ul><ul>
 <li>Download the arduino code and upload in arduino</li>
 </ul><ul>
@@ -27,7 +27,7 @@
 <li>Check for the pin connection in arduino code to connect with gsm module</li>
 </ul><h2>Usage</h2>
 <p>Used in remote areas where internet is inaccessible but 2g network is available, example: Hilly areas. With just Sms you can send  money to the respective account holders.</p><h2>Project Status</h2>
-<p>In Progress/......<br>
+<p><u>In Progress</u></p><br>
 The application for mobile is pending. Local bank is created and you can create account, transfer money and send sms to the respective account numbers.</p><h2>Improvements</h2>
 <ul>
 <li>Security and vulnerability while Sms handling</li>

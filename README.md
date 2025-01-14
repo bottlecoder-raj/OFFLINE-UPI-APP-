@@ -18,7 +18,7 @@
 </ul><ul>
 <li>Transfer money from one account to other.</li>
 </ul><ul>
-<li><h3>CODE FOR COMMUNICATION:</h3></li>
+<li><h4><u>CODE FOR COMMUNICATION:</u></h4></li>
 </ul><ul>
 <li>Download the arduino code and upload in arduino</li>
 </ul><ul>
@@ -34,7 +34,7 @@ The application for mobile is pending. Local bank is created and you can create 
 </ul><ul>
 <li>User interface
 (optional)</li>
-</ul><h2>Acknowledgement</h2>
+</ul><h2>Authors</h2>
 <ul>
 <li>Rajnarayan Hazra</li>
 <li>Vrushtee Gaikwad</li></ul>

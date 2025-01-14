@@ -35,6 +35,7 @@
 (optional)</li>
 </ul><h2>Acknowledgement</h2>
 <hr><ul>
-<li>Made by:Rajnarayan Hazra</li>
-  <li></li>Vrushtee Gaikwad</li>
+Made by
+<li>Rajnarayan Hazra</li>
+<li>Vrushtee Gaikwad</li></ul>
 

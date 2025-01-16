@@ -35,7 +35,7 @@ The application for mobile is pending. Local bank is created and you can create 
 </ul><ul>
 <li>User interface
 (optional)</li>
-</ul><h2>Developers</h2>
+</ul><h2>Developer</h2>
 <ul>
 <li>Rajnarayan Hazra</li></ul>
 

@@ -26,7 +26,7 @@
 <li>The Serial.c code is for communication of commands that need to be send from computer to arduino to gsm module which is integrated .</li>
 </ul><ul>
 <li>Check for the pin connection in arduino code to connect with gsm module</li>
-  <li>To enable sms, connect arduino to computer(host) and on gsm module with pin connection with arduino<h5>[otherwise error COM port will be shown]</h5></li>
+  <li>To enable sms, connect arduino to computer(host) and on gsm module with pin connection with arduino<b>[otherwise error COM port will be shown]</b></li>
 </ul><h2>Usage</h2>
 <p>Used in remote areas where internet is inaccessible but 2g network is available, example: Hilly areas. With just Sms you can send  money to the respective account holders.</p><h2>Project Status</h2>
 <p><h4><u>In Progress</h4></p>

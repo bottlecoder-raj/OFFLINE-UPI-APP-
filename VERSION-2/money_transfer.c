@@ -7,6 +7,7 @@ int main()
     printf("\n\nNOTE! This should be done only by user.\nReceivers must request sender to send money\n\n");
     char sender[20];
     char receiver[20];
+    char receiver002[20];
     float balance;
     float se_m;
     float re_m;
@@ -47,7 +48,7 @@ int main()
     if(sms_token != NULL)
     {
         printf("Receiver:%s\n",sms_token);
-        strcpy(receiver,sms_token);
+        strcpy(receiver002,sms_token);
     }
      sms_token = strtok(NULL,",");
     if(sms_token != NULL)
@@ -55,7 +56,8 @@ int main()
         printf("Amount Exchange:%s\n",sms_token);
     }
     balance=strtof(sms_token,NULL);
-
+    printf("HELLOUSER%s",receiver002);
+    strcpy(receiver,receiver002);
 
     // Checking senders acc number and balance
     while (fgets(line, sizeof(line), file))
@@ -239,6 +241,6 @@ int main()
     scanf("%d",&zero);
 */
  remove(messfile);
- remove(smsfile);
+//  remove(smsfile);
     return 0;
 }
